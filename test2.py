@@ -43,7 +43,7 @@ def percentage_sheet():
     gui_background.percentage_works(file_to_calc_percentage_from)
     files = glob.glob(r'Attendance/Attendance Percentage' + "/*xlsx")
     max_file = max(files, key=os.path.getctime)
-    print(max_file)
+    messagebox.showinfo("Attendance Percentage Updated")
     os.startfile(max_file)
 
 
@@ -79,8 +79,7 @@ def image_select():
                                                  "attendance.")
     elif (image_file_path != '') and (attendance_file_path != ''):
         gui_background.classify_image(image_file_path, attendance_file_path)
-
-    messagebox.showinfo("Processing Complete", "Image processing complete! Attendance updated.")
+        messagebox.showinfo("Processing Complete", "Image processing complete! Attendance updated.")
 
 
 def live_demo():
