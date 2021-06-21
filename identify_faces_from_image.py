@@ -13,7 +13,7 @@ class IdentifyImage:
     predictor = dlib.shape_predictor("models/shape_predictor_68_face_landmarks.dat")
     fa = FaceAligner(predictor, desired_face_width=256)
 
-    with open("Classifier/classifier_mine_knn_20_class_main.clf", 'rb') as f:
+    with open("Classifier/classifier_mine_knn_32_class_main.clf", 'rb') as f:
         knn_clf = pickle.load(f)
 
     def __init__(self, path_of_selected_image):
