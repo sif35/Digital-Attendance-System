@@ -13,7 +13,7 @@ Download the **__models__** folder from [this drive link](https://drive.google.c
 
 ---
 # Classifier Files
-Download: [Classiferi Files](https://drive.google.com/drive/folders/11OjIvdWXllsfFwF2Mwd66xpFGyxaAbqL?usp=sharing)
+Download: [Classifier Files](https://drive.google.com/drive/folders/11OjIvdWXllsfFwF2Mwd66xpFGyxaAbqL?usp=sharing)
 
 ---
 # Face Encodings and example images folder
