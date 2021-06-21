@@ -9,7 +9,7 @@ import xlsxwriter as xl
 class Percentage:
 
     file_path = "Attendance/Attendance Percentage"
-    file_name = "Attendance Sheet Percentage.xlsx"
+    file_name = "Attendance Sheet Percentage"
 
     def create_new_percentage_sheet(self):
 
