@@ -1,6 +1,9 @@
 import dlib
 import numpy as np
 import pickle
+import cv2
+import os
+import matplotlib.pyplot as plt
 from PIL import Image
 import encoding_functions
 from face_alignment import FaceAligner
@@ -16,7 +19,42 @@ class IdentifyImage:
     def __init__(self, path_of_selected_image):
 
         self.image_path = path_of_selected_image
+        
+    def show_image(self, face_predictions):
 
+        img = Image.open(self.image_path)
+        img = np.array(img.convert("RGB"))
+
+        for face_name, (top_cord, right_cord, bottom_cord, left_cord) in face_predictions:
+            # co-ordinates are: (left(1st), top(2nd)) and (right(3rd), bottom(4th))
+            # All the addition subtraction are nothing just to place the rectangle nicely
+            img = cv2.rectangle(img, (left_cord - 5, bottom_cord + 5), (right_cord + 5, top_cord - 20), (0, 255, 0), 3)
+            img = cv2.rectangle(img, (left_cord - 7, bottom_cord + 5),
+                                (right_cord + 7, bottom_cord + 20), (0, 255, 0), -1)
+            img = cv2.putText(img, face_name, (left_cord - 5, bottom_cord + 15), cv2.FONT_HERSHEY_COMPLEX, 0.5,
+                                (255, 255, 255), 2)
+
+        plt.imshow(img)
+        plt.show()
+    
+    
+    def save_faces_from_image(self, face_predictions):
+
+        img = Image.open(self.image_path)
+        img = np.array(img.convert("RGB"))
+
+        for files in os.listdir("Students"):
+            os.remove(os.path.join("Students", files))
+
+        for name, (top_cord, right_cord, bottom_cord, left_cord) in face_predictions:
+
+            face = img[top_cord:bottom_cord, left_cord:right_cord]
+            face = cv2.cvtColor(face, cv2.COLOR_BGR2RGB)
+            roll = main_names.name_dict[name][1]
+
+            cv2.imwrite("Students/{}.jpg".format(roll), face)
+            
+    
     def classify_faces(self):
 
         face_predictions = []  # To store prediction results
