@@ -14,6 +14,7 @@ Download the **__models__** folder from [this drive link](https://drive.google.c
 ---
 # Face Encodings and example images folder
 Download Face Encodings: [Face Encodings](https://drive.google.com/drive/folders/1c_qnZrmPh1mwq8VmIDo_JxVbdR1a311w?usp=sharing)
+
 Download example images: [Images](https://drive.google.com/drive/folders/1vI7IxZqRVs5DJ9dL49fhJ183M-WUJAsD?usp=sharing)
 
 ---
@@ -21,11 +22,11 @@ Download example images: [Images](https://drive.google.com/drive/folders/1vI7IxZ
 
 Project Folder:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │   project files
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   project files
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │   ......
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   .......
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   ......
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   .......
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├───Face Encodings 
 
