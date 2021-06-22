@@ -9,11 +9,10 @@ import os
 import glob
 
 root = Tk()
-root.title("Digital Attendence")
+root.title("Digital Attendance")
 
 my_img = ImageTk.PhotoImage(Image.open("lol.png").resize((700, 150), Image.ANTIALIAS))
 
-mystring = tk.StringVar(root)
 root.iconbitmap("ed2.ico")
 
 xl_name = ''
@@ -31,16 +30,9 @@ def create_attendance_sheet():
         messagebox.showinfo("Attendance Sheet Creation", "Attendance Sheet Created")
 
 
-# print(mystring.get())
-
-
-def open():
-    return
-
-
 def percentage_sheet():
     root.filename = filedialog.askopenfilename(initialdir="Attendance",
-                                               title="Selece a file to calculate percentage from")
+                                               title="Select a file to calculate percentage from")
     if root.filename == '':
         messagebox.showinfo("File", "No file chosen")
         return
@@ -50,6 +42,7 @@ def percentage_sheet():
     files = glob.glob(r'Attendance/Attendance Percentage' + "/*xlsx")
     max_file = max(files, key=os.path.getctime)
     os.startfile(max_file)
+
 
 def show_attendance():
     root.filename = filedialog.askopenfilename(initialdir="Attendance", title="Select a file")
@@ -67,18 +60,16 @@ def new_win():
     new_window.title("Attendance")
     new_window.iconbitmap("ed1.ico")
     new_window.resizable(False, False)
-    # xl_name = Entry(new_window, width=40, textvariable=mystring).pack()
     btn5 = Button(new_window, text="Create new sheet", image=cm, width=150, height=20, compound='c',
                   activebackground="lightgreen", font=('Impact', 12), fg="red",
                   command=create_attendance_sheet).pack(pady=2)
-    btn6 = Button(new_window, text="Show Attendance", image=cm, width=150, height=20, compound='c', activebackground="red",
-                  font=('Impact', 12), fg="red", command=show_attendance).pack(padx=10, pady=20)
+    btn6 = Button(new_window, text="Show Attendance", image=cm, width=150, height=20, compound='c',
+                  activebackground="red", font=('Impact', 12), fg="red", command=show_attendance).pack(padx=10, pady=20)
     btn7 = Button(new_window, text="Percentage", image=cm, width=150, height=20, compound='c', activebackground="red",
                   font=('Impact', 12), fg="red", command=percentage_sheet).pack(padx=10, pady=20)
     btn8 = Button(new_window, text="Back", image=cm, width=150, height=20, compound='c', activebackground="red",
                   font=('Impact', 12), fg="red", command=lambda: new_window.destroy()).pack(padx=10, pady=20)
     
-
 
 def image_select():
     root.filename = filedialog.askopenfilename(initialdir="./Predict Images", title="Select an Image")
@@ -97,13 +88,13 @@ def image_select():
 
 
 def live_demo():
-    gui_background.classify_video()
-
-
-def result():
-    # Open csv from here
-    # root.filename=filedialog.askopenfilename(initialdir="C:/Users/FeaRleSS/Pictures",title="Select an Image")
-    return
+    root.filename = filedialog.askopenfilename(initialdir="./Attendance", title="Select an Attendance Sheet")
+    attendance_file_path = root.filename
+    if attendance_file_path == '':
+        messagebox.showerror("Attendance Sheet", "No attendance sheet chosen! Choose an attendance sheet to update "
+                                                 "attendance. Try Again!")
+        return
+    gui_background.classify_video(attendance_file_path)
 
 
 f = LabelFrame(root, padx=50, pady=50)
