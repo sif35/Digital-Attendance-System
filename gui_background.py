@@ -14,10 +14,13 @@ def classify_image(image_path, attendance_path):
     attendance_update.modify_attendance_sheet(face_name_list)
 
 
-def classify_video():
+def classify_video(attendance_file_path):
 
+    attendance_update = Attendance(attendance_file_path=attendance_file_path)
     video_identification = IdentifyVideo()
-    video_identification.classify_faces()
+
+    name_list = video_identification.classify_faces()
+    attendance_update.modify_attendance_sheet(name_list)
 
 
 def create_attendance(path, name):
