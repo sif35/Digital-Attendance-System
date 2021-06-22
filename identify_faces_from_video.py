@@ -6,7 +6,7 @@ import pickle
 
 class IdentifyVideo:
 
-    with open("Classifier/classifier_mine_knn_20_class_main.clf", 'rb') as f:
+    with open("Classifier/Classifier_Model.clf", 'rb') as f:
         knn_clf = pickle.load(f)
 
     def __init__(self):
@@ -43,7 +43,7 @@ class IdentifyVideo:
         face_detector = dlib.get_frontal_face_detector()
 
         capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-
+        face_name_list = []
         while True:
             ret, frame = capture.read()
 
@@ -60,7 +60,8 @@ class IdentifyVideo:
 
                 image_crop = frame[top:top + height, left:left + width]
 
-                face_name = self.classify_face_for_video(image_crop)
+                face_name = (self.classify_face_for_video(image_crop))
+                face_name_list.append(face_name)
 
                 cv2.rectangle(frame, (left - 5, bottom + 5), (right + 5, top - 20), (0, 255, 0), 3)
                 cv2.rectangle(frame, (left - 7, bottom + 5),
@@ -68,9 +69,10 @@ class IdentifyVideo:
                 cv2.putText(frame, face_name, (left - 5, bottom + 15), cv2.FONT_HERSHEY_COMPLEX, 0.5,
                             (255, 255, 255), 2)
 
-            cv2.imshow("Image", frame)
+            cv2.imshow("Live Camera", frame)
 
             if cv2.waitKey(100) & 0xFF == 27:
                 break
 
-    cv2.destroyAllWindows()
+        cv2.destroyAllWindows()
+        return face_name_list
