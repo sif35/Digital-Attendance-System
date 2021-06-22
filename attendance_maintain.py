@@ -56,7 +56,7 @@ class Attendance:
 
     percentage_file_path = "Attendance/Attendance Percentage/Attendance Sheet Percentage.xlsx"
 
-    def modify_attendance_sheet(self, name_list=None):
+    def modify_attendance_sheet(self, name_list):
 
         list_of_name_dict = list(main_names.name_dict)
         workbook = openpyxl.load_workbook(self.file_path)  # file_path variable will be use here
