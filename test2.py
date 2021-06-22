@@ -22,11 +22,13 @@ xl_name = ''
 def create_attendance_sheet():
     folder_path = filedialog.askdirectory(initialdir="./", title="Select a folder")
     file_name = simpledialog.askstring("File name", "Enter the file name:")
-    gui_background.create_attendance(folder_path, file_name)
-    if file_name and folder_path is not None:
-        messagebox.showinfo("{} created at {}".format(file_name, folder_path))
+
+    if folder_path != '' and file_name is None:
+        messagebox.showinfo("Attendance Sheet Creation", "Attendance Sheet Created")
+    elif folder_path != '' and file_name is not None:
+        messagebox.showinfo("Attendance Sheet Creation", "{} created at {}".format(file_name, folder_path))
     else:
-        messagebox.showinfo("Attendance Sheet Created")
+        messagebox.showinfo("Attendance Sheet Creation", "Attendance Sheet Created")
 
 
 # print(mystring.get())
@@ -39,31 +41,43 @@ def open():
 def percentage_sheet():
     root.filename = filedialog.askopenfilename(initialdir="Attendance",
                                                title="Selece a file to calculate percentage from")
+    if root.filename == '':
+        messagebox.showinfo("File", "No file chosen")
+        return
     file_to_calc_percentage_from = root.filename
     gui_background.percentage_works(file_to_calc_percentage_from)
+    messagebox.showinfo("Percentage Update", "Attendance Percentage Updated")
     files = glob.glob(r'Attendance/Attendance Percentage' + "/*xlsx")
     max_file = max(files, key=os.path.getctime)
-    messagebox.showinfo("Attendance Percentage Updated")
     os.startfile(max_file)
+
+def show_attendance():
+    root.filename = filedialog.askopenfilename(initialdir="Attendance", title="Select a file")
+    if root.filename != '':
+        path = root.filename
+        os.startfile(path)
+    else:
+        messagebox.showinfo("No file", "No file chosen")
 
 
 def new_win():
     global xl_name
     new_window = Toplevel(root)
     new_window.geometry("400x250")
-    new_window.title("Result")
+    new_window.title("Attendance")
     new_window.iconbitmap("ed1.ico")
     new_window.resizable(False, False)
     # xl_name = Entry(new_window, width=40, textvariable=mystring).pack()
-    btn5 = Button(new_window, text="Create new sheet", image=cm, width=100, height=20, compound='c',
+    btn5 = Button(new_window, text="Create new sheet", image=cm, width=150, height=20, compound='c',
                   activebackground="lightgreen", font=('Impact', 12), fg="red",
                   command=create_attendance_sheet).pack(pady=2)
-    btn6 = Button(new_window, text="OPEN", image=cm, width=100, height=20, compound='c', activebackground="red",
-                  font=('Impact', 12), fg="red", command=open).pack(padx=10, pady=20)
-    btn7 = Button(new_window, text="Percentage", image=cm, width=100, height=20, compound='c', activebackground="red",
+    btn6 = Button(new_window, text="Show Attendance", image=cm, width=150, height=20, compound='c', activebackground="red",
+                  font=('Impact', 12), fg="red", command=show_attendance).pack(padx=10, pady=20)
+    btn7 = Button(new_window, text="Percentage", image=cm, width=150, height=20, compound='c', activebackground="red",
                   font=('Impact', 12), fg="red", command=percentage_sheet).pack(padx=10, pady=20)
-    btn8 = Button(new_window, text="Back", image=cm, width=100, height=20, compound='c', activebackground="red",
+    btn8 = Button(new_window, text="Back", image=cm, width=150, height=20, compound='c', activebackground="red",
                   font=('Impact', 12), fg="red", command=lambda: new_window.destroy()).pack(padx=10, pady=20)
+    
 
 
 def image_select():
@@ -101,7 +115,7 @@ btn1 = Button(f, text="Select Image", image=cm, width=250, height=30, compound='
               font=('Impact', 12), fg="red", command=image_select).grid(row=1, column=0)
 btn2 = Button(f, text="Live Camera", image=cm, width=250, height=30, compound='c', activebackground="lightgreen",
               font=('Impact', 12), fg="red", command=live_demo).grid(row=1, column=1)
-btn3 = Button(f, text="Result", image=cm, width=250, height=30, compound='c', activebackground="lightgreen",
+btn3 = Button(f, text="Attendance", image=cm, width=250, height=30, compound='c', activebackground="lightgreen",
               font=('Impact', 12), fg="red", command=new_win).grid(row=2, column=0)
 btn4 = Button(f, text="Exit", image=cm, width=250, height=30, compound='c', activebackground="red", font=('Impact', 12),
               fg="red", command=root.quit).grid(row=2, column=1)
