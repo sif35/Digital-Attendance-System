@@ -5,7 +5,7 @@ This is the final project of Samiul Bares Sifat (1707035) and Sajidul Islam Saif
 
 ---
 # Dataset
-Download Dataset from [Drive Link](https://drive.google.com/drive/u/4/folders/10nuBg-hemBOxNmKVHK_CsFJ-DhS505jk).
+Make your own.
 
 ---
 # Model Files
