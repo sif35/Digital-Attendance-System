@@ -6,4 +6,4 @@
 /Face Encodings/
 /Attendance/
 .idea/
-__pycache__/
+**/__pycache__
