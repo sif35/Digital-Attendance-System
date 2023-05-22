@@ -1,6 +1,9 @@
-Aligned Dataset/
-Augmented Dataset/
-Dataset/
-Classifier/
-Face Encodings/
-Attendance/
+/Aligned Dataset/
+/Augmented Dataset/
+/Dataset/
+/Classifier/
+/Face Encodings/
+/Attendance/
+.idea
+__pycache__
+.gitignore
