@@ -11,7 +11,7 @@ import glob
 root = Tk()
 root.title("Digital Attendance")
 
-my_img = ImageTk.PhotoImage(Image.open("lol.png").resize((700, 150), Image.ANTIALIAS))
+my_img = ImageTk.PhotoImage(Image.open("lol.png").resize((700, 150), Image.LANCZOS))
 
 root.iconbitmap("ed2.ico")
 

@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import encoding_functions
 from face_alignment import FaceAligner
+import main_names
 
 
 class IdentifyImage:
