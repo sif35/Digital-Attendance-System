@@ -17,13 +17,6 @@ Download the **__models__** folder from [this drive link](https://drive.google.c
 # Classifier Files
 Download: [Classifier Files](https://drive.google.com/drive/folders/11OjIvdWXllsfFwF2Mwd66xpFGyxaAbqL?usp=sharing)
 
-
-# Face Encodings and example images folder
-Download Face Encodings: [Face Encodings](https://drive.google.com/drive/folders/1c_qnZrmPh1mwq8VmIDo_JxVbdR1a311w?usp=sharing)
-
-Download example images: [Images](https://drive.google.com/drive/folders/1vI7IxZqRVs5DJ9dL49fhJ183M-WUJAsD?usp=sharing)
-
-
 # Folder Structure should be like this
 
 Project Folder:
